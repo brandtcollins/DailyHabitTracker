@@ -23,3 +23,10 @@ export const contextMenuButtons: ContextMenuButtons[] = [
   { text: "2 Drinks", color: "bg-indigo-400", category: 3 },
   { text: "Clear Selection", color: "bg-white", category: 0 },
 ];
+
+export const colorArr = [
+  "bg-white",
+  "bg-red-400",
+  "bg-lime-600",
+  "bg-indigo-400",
+];

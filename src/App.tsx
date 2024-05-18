@@ -78,7 +78,7 @@ function App() {
     }
   }, [year]);
 
-  const handleCalendarClick = (category: number) => {
+  const handleCalendarContextMenu = (category: number, id: string) => {
     if (selectedDay) {
       const updatedCalendar = calendar.map((month) => {
         const updatedDays = month.days.map((day) => {
@@ -91,6 +91,23 @@ function App() {
       });
       setCalendar(updatedCalendar);
     }
+  };
+
+  const handleCalendarClick = (d: CalendarDay) => {
+    console.log(`left click`, d);
+    const updatedCalendar = calendar.map((month) => {
+      const updatedDays = month.days.map((day) => {
+        if (day.id === d.id) {
+          return {
+            ...day,
+            category: day.category === 3 ? 0 : day.category + 1,
+          };
+        }
+        return day;
+      });
+      return { ...month, days: updatedDays };
+    });
+    setCalendar(updatedCalendar);
   };
 
   return (
@@ -130,12 +147,12 @@ function App() {
                   ></div>
                 ))}
                 {month.days.map((d) => {
-                  const { date, day, category, id } = d;
                   return (
                     <CalendarDaySquare
-                      key={id}
-                      category={category}
+                      key={d.id}
+                      day={d}
                       colors={colorArr}
+                      onClick={() => handleCalendarClick(d)}
                       onContextMenu={(e) => {
                         e.preventDefault();
                         setClicked(true);
@@ -143,7 +160,7 @@ function App() {
                         setPoints({ x: e.clientX, y: e.clientY });
                       }}
                     >
-                      {date}
+                      {d.date}
                     </CalendarDaySquare>
                   );
                 })}
@@ -157,7 +174,9 @@ function App() {
           top={points.y}
           left={points.x}
           buttons={contextMenuButtons}
-          handleCalendarClick={handleCalendarClick}
+          handleCalendarClick={(category) =>
+            handleCalendarContextMenu(category, selectedDay.id)
+          }
         />
       )}
     </>

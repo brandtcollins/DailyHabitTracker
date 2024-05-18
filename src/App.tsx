@@ -1,8 +1,14 @@
-import { useId, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import "./App.css";
-import CalendarDaySquare, { ContextMenu } from "./components/CalendarDaySquare";
+import CalendarDaySquare from "./components/CalendarDaySquare";
 import { CalendarDay, CalendarMonth } from "./ts/Interfaces";
-import { contextMenuButtons, days, months } from "./lib/PlaceholderData";
+import {
+  colorArr,
+  contextMenuButtons,
+  days,
+  months,
+} from "./lib/PlaceholderData";
+import { ContextMenu } from "./components/ContextMenus";
 
 function App() {
   const date = new Date();
@@ -28,7 +34,6 @@ function App() {
       document.removeEventListener("click", () => {});
     };
   }, []);
-  const colorArr = ["bg-white", "bg-red-400", "bg-lime-600", "bg-indigo-400"];
 
   const yearCalendar: CalendarMonth[] = [];
 
@@ -129,7 +134,6 @@ function App() {
                   return (
                     <CalendarDaySquare
                       key={id}
-                      id={id}
                       category={category}
                       colors={colorArr}
                       onContextMenu={(e) => {

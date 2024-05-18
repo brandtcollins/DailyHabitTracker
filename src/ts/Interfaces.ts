@@ -1,3 +1,7 @@
+export interface CalendarYear {
+  year: number;
+  months: CalendarMonth[];
+}
 export interface CalendarMonth {
   month: number;
   days: CalendarDay[];

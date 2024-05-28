@@ -18,5 +18,12 @@ export interface CalendarDay {
 export interface ContextMenuButtons {
   text: string;
   color: string;
-  category: number;
+  category_id: number;
+}
+
+export interface Category {
+  id: number;
+  text: string;
+  color: string;
+  created_at: string;
 }

@@ -5,6 +5,7 @@ interface CalendarDaySquareProps {
   colors: string[];
   children: number | string | ReactElement;
   onContextMenu?: (e: React.MouseEvent) => void;
+  category: any;
   onClick?: () => void;
   day: CalendarDay;
 }
@@ -13,11 +14,10 @@ const CalendarDaySquare: FunctionComponent<CalendarDaySquareProps> = ({
   colors,
   children,
   onContextMenu,
-
+  category,
   onClick,
   day,
 }) => {
-  const { category } = day;
   return (
     <>
       <div

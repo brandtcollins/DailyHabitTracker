@@ -18,10 +18,10 @@ export const months = [
 export const days = ["S", "M", "T", "W", "T", "F", "S"];
 
 export const contextMenuButtons: ContextMenuButtons[] = [
-  { text: "0 Drinks", color: "bg-red-400", category: 1 },
-  { text: "1 Drink", color: "bg-lime-600", category: 2 },
-  { text: "2 Drinks", color: "bg-indigo-400", category: 3 },
-  { text: "Clear Selection", color: "bg-white", category: 0 },
+  { text: "0 Drinks", color: "bg-red-400", category_id: 1 },
+  { text: "1 Drink", color: "bg-lime-600", category_id: 2 },
+  { text: "2 Drinks", color: "bg-indigo-400", category_id: 3 },
+  { text: "Clear Selection", color: "bg-white", category_id: 0 },
 ];
 
 export const colorArr = [
@@ -29,4 +29,10 @@ export const colorArr = [
   "bg-red-400",
   "bg-lime-600",
   "bg-indigo-400",
+];
+
+export const initCategories = [
+  { id: 1, text: "0 Drinks", color: "bg-red-400", created_at: "" },
+  { id: 2, text: "1 Drink", color: "bg-lime-600", created_at: "" },
+  { id: 3, text: "2 Drinks", color: "bg-indigo-400", created_at: "" },
 ];

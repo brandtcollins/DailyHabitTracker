@@ -1,3 +1,5 @@
+import { Database } from "./supabase";
+
 export interface CalendarYear {
   year: number;
   months: CalendarMonth[];
@@ -21,9 +23,12 @@ export interface ContextMenuButtons {
   category_id: number;
 }
 
-export interface Category {
-  id: number;
-  text: string;
-  color: string;
-  created_at: string;
-}
+// export interface CategoryGroup {
+//   id: number;
+//   text: string;
+//   created_at: string;
+//   user_id: number;
+// }
+
+export type CategoryGroup =
+  Database["public"]["Tables"]["category_groups"]["Row"];

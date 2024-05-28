@@ -30,9 +30,3 @@ export const colorArr = [
   "bg-lime-600",
   "bg-indigo-400",
 ];
-
-export const initCategories = [
-  { id: 1, text: "0 Drinks", color: "bg-red-400", created_at: "" },
-  { id: 2, text: "1 Drink", color: "bg-lime-600", created_at: "" },
-  { id: 3, text: "2 Drinks", color: "bg-indigo-400", created_at: "" },
-];

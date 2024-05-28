@@ -3,7 +3,7 @@ import {
   CalendarDay,
   CalendarMonth,
   CalendarYear,
-  Category,
+  CategoryGroup,
 } from "../ts/Interfaces";
 import {
   colorArr,
@@ -14,7 +14,7 @@ import {
 import CalendarDaySquare from "./CalendarDaySquare";
 import { ContextMenu } from "./ContextMenus";
 import toast from "react-hot-toast";
-import { initCategories } from "../lib/PlaceholderData";
+import Categories from "./Categories";
 
 interface CalendarProps {}
 
@@ -24,16 +24,14 @@ const Calendar: FunctionComponent<CalendarProps> = () => {
   const [selectedYear, setSelectedYear] = useState(date.getFullYear());
   const [yearArr, setYearArr] = useState<CalendarYear[]>([]);
   const [calendar, setCalendar] = useState<CalendarMonth[]>([]);
-  const [categories, setCategories] = useState<Category[]>(initCategories);
+  const [categoryGroups, setCategoryGroups] = useState<CategoryGroup[] | null>(
+    null
+  );
   const [clicked, setClicked] = useState(false);
   const [points, setPoints] = useState({ x: 0, y: 0 });
   const [selectedDay, setSelectedDay] = useState<CalendarDay | null>(null);
 
   const yearCalendar: CalendarMonth[] = [];
-
-  useEffect(() => {
-    console.log(categories);
-  }, [categories]);
 
   useEffect(() => {
     document.addEventListener("contextmenu", (e) => {
@@ -163,12 +161,7 @@ const Calendar: FunctionComponent<CalendarProps> = () => {
           <span onClick={() => setSelectedYear(selectedYear + 1)}>+</span>
         </div>
         <div className="flex justify-center ">
-          <div className="flex flex-col justify-center">
-            {}
-            <div className="px-4 py-1 my-1 bg-slate-200 rounded-md">
-              Category 1
-            </div>
-          </div>
+          <Categories />
           <div className="flex flex-col mx-1">
             <span className="text-xs mb-2 w-8 h-8">&nbsp;</span>
             {[...Array(5)].map((e, i) =>
